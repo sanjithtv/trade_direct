@@ -8,6 +8,9 @@ use App\td_classified_category;
 use App\td_classified_posts;
 use App\td_classified_posts_media;
 use App\td_classified_post_attributes;
+use App\td_classified_category_attributes;
+use App\td_members;
+
 use DB;
 
 class HomeController extends Controller
@@ -41,10 +44,16 @@ class HomeController extends Controller
         $media=td_classified_posts_media::where([['post_id', '=', $id],['deleted', '=', '0']])->get();
         $post=td_classified_posts::where('id',$id)->first();
         $category=td_classified_category::where('id', $post->post_category)->first();
+        $seller=td_members::where('id', $post->post_listedby)->get();
         $parent=$category->parent;
-        $attribute=td_classified_post_attributes::where([['post_id', '=', $id],['deleted', '=', '0']])->get();
         $featured=td_classified_posts::where([['featured', '=', '1'],['post_category', '=', $post->post_category],['id', '!=', $id]])->get();
-        return view('pages.productdetails',['media'=>$media,'post'=>$post,'parent'=>$parent,'attribute'=>$attribute,'featured'=>$featured]);
+        $attribute =DB::table('td_classified_category_attributes')
+            ->join('td_classified_post_attributes','td_classified_category_attributes.id', '=', 'td_classified_post_attributes.category_attribute_id')
+            ->where([['category_id', '=', $post->post_category],['td_classified_category_attributes.deleted', '=', '0'],['status', '=', '1']])
+             ->where('td_classified_post_attributes.post_id','=', $id)
+            ->get();
+      
+        return view('pages.productdetails',['media'=>$media,'post'=>$post,'parent'=>$parent,'attribute'=>$attribute,'featured'=>$featured,'seller'=>$seller]);
     }
 
     /**
