@@ -136,7 +136,7 @@
             @foreach($post as $value)
               <div class="col-6 col-lg-3">
                 <div class="table-shows">
-                 <a href="{{ route('td/productdetails',$value->id) }}"> <div class="fetrur-new"><img src="{{ URL::asset('http://localhost:8080/thumbnail/'.TradeHelp::get_image($value->id))}}"></div>
+                 <a href="{{ route('td/productdetails',$value->slug) }}"> <div class="fetrur-new"><img src="{{ URL::asset('http://localhost:8080/thumbnail/'.TradeHelp::get_image($value->id))}}"></div>
                   <div class="fetaure-detail">
                     <h4>Rs {{$value->post_price}}</h4>
                    <!-- <h5>{{TradeHelp::get_image($value->id)}}</h5>-->

@@ -39,9 +39,11 @@ class HomeController extends Controller
         
     }
 
-    public function getProductDetails($id)
+    public function getProductDetails($id1)
     {
-        $media=td_classified_posts_media::where([['post_id', '=', $id],['deleted', '=', '0']])->get();
+        $str=$id1;
+        $id=substr($str, strrpos($str, '-') + 1);
+       $media=td_classified_posts_media::where([['post_id', '=', $id],['deleted', '=', '0']])->get();
         $post=td_classified_posts::where('id',$id)->first();
         $category=td_classified_category::where('id', $post->post_category)->first();
         $seller=td_members::where('id', $post->post_listedby)->get();
