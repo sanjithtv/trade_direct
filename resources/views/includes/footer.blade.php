@@ -50,4 +50,62 @@
       </div>
     </div>
 
-  
+    <div class="modal fade modalpop-ups-head" id="exampleModalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header-padding">
+       
+        <button type="button" class="modal-hd-close close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"><svg width="25px" height="25px" viewBox="0 0 1024 1024" data-aut-id="icon" class="" fill-rule="evenodd"><path class="rui-22SD7" d="M878.336 85.333l-366.336 366.315-366.336-366.315h-60.331v60.331l366.336 366.336-366.336 366.336v60.331h60.331l366.336-366.336 366.336 366.336h60.331v-60.331l-366.315-366.336 366.315-366.336v-60.331z"></path></svg></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="wrap-modalform  id="regForm" action="/action_page.php">
+          <div class="text-center mb-4">
+            <img src="{{ URL::asset('trade/images/logo.png')}}" width="150" align="center"><br>
+                  <h3>Register with Trade Direct:</h3> </div><br>
+
+
+  <!-- One "tab" for each step in the form: -->
+  <div class="tab">Name:
+    <p><input placeholder="First name..." oninput="this.className = ''" name="fname"></p>
+    <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
+  </div>
+  <div class="tab">Contact Info:
+    <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
+    <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
+  </div>
+  <div class="tab">Date Of Birth:
+    <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
+    <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
+    <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+  </div>
+  <div class="tab">Login Info:
+    <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
+    <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
+  </div>
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+    </div>
+  </div>
+  <!-- Circles which indicates the steps of the form: -->
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+  </div>
+</form>
+      </div>
+
+      <div class="modal-footer-new">   
+
+<div class="login-email-modal"><br>
+<div class="modal-ft-small">While you registering, you are accepting <br>
+  <a href="">Trade Direct Terms and Conditions and Privacy Policy</a></div>
+      </div>
+    </div>
+  </div>
+</div>

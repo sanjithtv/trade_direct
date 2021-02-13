@@ -174,3 +174,13 @@ $(function () {
     $('.swipe-tab[data-slick-index=' + currentIndex + ']').addClass(activeTabClassName);
   });
 });
+  $(document).ready(function(){
+  $('.your-class').slick({
+    dots: true
+  });
+});
+
+$('.modal').on('shown.bs.modal', function (e) {
+  $('.your-class').slick('setPosition');
+  $('.wrap-modal-slider').addClass('open');
+})

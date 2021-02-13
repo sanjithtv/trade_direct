@@ -27,7 +27,7 @@ $categories = td_classified_category::with('children')->where('parent','=',0)->g
                     <ul class="nav flex-column">
                       <li class="nav-item"> <span class="nav-link active" href="#">{{$item->name}}</span> </li>
                       @foreach($item->children as $submenu)
-                      <li class="nav-item"> <a class="nav-link" href="#">{{$submenu->name}}</a> </li>
+                      <li class="nav-item"> <a class="nav-link" href="{{route('td/categorylist',$submenu->slug)}}">{{$submenu->name}}</a> </li>
                       @endforeach 
                     </ul>
                   </div>

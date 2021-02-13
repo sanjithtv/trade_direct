@@ -257,7 +257,7 @@
                   <div> Delhi </div>
                   <div class="sub-features"> today </div>
                 </div>
-              </div>
+              </div></a>
             </div>
           </div>
           @endforeach

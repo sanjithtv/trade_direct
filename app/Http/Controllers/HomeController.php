@@ -43,7 +43,7 @@ class HomeController extends Controller
     {
         $str=$id1;
         $id=substr($str, strrpos($str, '-') + 1);
-       $media=td_classified_posts_media::where([['post_id', '=', $id],['deleted', '=', '0']])->get();
+        $media=td_classified_posts_media::where([['post_id', '=', $id],['deleted', '=', '0']])->get();
         $post=td_classified_posts::where('id',$id)->first();
         $category=td_classified_category::where('id', $post->post_category)->first();
         $seller=td_members::where('id', $post->post_listedby)->get();
@@ -56,6 +56,39 @@ class HomeController extends Controller
             ->get();
       
         return view('pages.productdetails',['media'=>$media,'post'=>$post,'parent'=>$parent,'attribute'=>$attribute,'featured'=>$featured,'seller'=>$seller]);
+    }
+
+
+    public function getCategorylist(Request $request,$str)
+    {
+
+        $id=substr($str, strrpos($str, '-') + 1);
+        $date=date("Y-m-d");
+
+       if ($request->ajax() && isset($request->brand)) {
+            $brand = $request->brand;
+            $category = DB::table('td_classified_posts')
+                ->join('td_classified_post_attributes','td_classified_posts.id', '=', 'td_classified_post_attributes.post_id')
+               ->join('td_classified_posts_media','td_classified_posts.id', '=', 'td_classified_posts_media.post_id')
+                ->orderBy('featured', 'DESC') 
+                ->whereIN('attribute_value', explode( ',', $brand ))
+                //->where('td_classified_posts_media.deleted','=','0')
+                ->select( 'td_classified_posts.*',
+                DB::raw('(select td_file_name from td_classified_posts_media where post_id  =   td_classified_posts.id  and deleted = 0 order by post_id asc limit 1) as photo')  )
+                ->distinct()
+                ->get();
+            return json_encode($category);
+            
+        }
+        else{
+            
+       
+        $category = td_classified_posts::orderBy('featured', 'DESC')
+        ->where([['post_category', '=', $id],['post_deleted', '=', '0'],['expiry_date', '>=', $date]])
+        ->get();
+        $attribute=td_classified_category_attributes::where([['category_id','=',$id],['deleted','=', '0']])->get();
+        return view('pages.categorylist',['category'=>$category,'attribute'=>$attribute]);
+        }
     }
 
     /**

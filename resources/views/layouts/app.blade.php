@@ -22,7 +22,68 @@
       <div><span><b>Powered by</b> - <a href="http://www.bqubetech.com/">BQube Technologies</a></span></div>
     </div>
   </div>
+</div>    
+
+<div class="modal fade modalpop-ups-head" id="exampleModalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header-padding">
+       
+        <button type="button" class="modal-hd-close close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"><svg width="25px" height="25px" viewBox="0 0 1024 1024" data-aut-id="icon" class="" fill-rule="evenodd"><path class="rui-22SD7" d="M878.336 85.333l-366.336 366.315-366.336-366.315h-60.331v60.331l366.336 366.336-366.336 366.336v60.331h60.331l366.336-366.336 366.336 366.336h60.331v-60.331l-366.315-366.336 366.315-366.336v-60.331z"></path></svg></span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="wrap-modal-slider">
+          <div class="your-class">
+            <div>
+              <div class="modal-common-img">
+              <p>
+                
+                <img src="{{ URL::asset('trade/images/git-modal.png')}}">
+              
+                Help make Trade Direct safer place to buy and sell
+              </p>
+              </div>
+            </div>
+            <div>
+               <div class="modal-common-img">
+                <img src="{{ URL::asset('trade/images/favorite-modal.png')}}">
+              <p>
+                Contact and close deals faster
+              </p>
+            </div>
+            </div>
+            <div>
+               <div class="modal-common-img">
+                <img src="{{ URL::asset('trade/images/pointChat-modal.png')}}">
+              <p>
+                Save all your favorite items in one place
+              </p>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-social-btns">     
+        <button><i class="fa fa-envelope"></i>
+         
+        Login with email</button>
+      </div>
+      <div class="modal-footer-new">
+<div class="login-email-modal">
+ <p>We won't share your personal details with anyone</p>
+<div class="modal-ft-small">If you continue, you are accepting <br>
+  <a href="">Trade Direct Terms and Conditions and Privacy Policy</a></div>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+
+
+
 <script src="{{ URL::asset('trade/js/jquery-3.4.0.min.js')}}"></script> 
 <script src="{{ URL::asset('trade/js/bootstrap.min.js')}}"></script> 
 <script src="{{ URL::asset('trade/js/slick.min.js')}}"></script> 
@@ -43,6 +104,86 @@ $(window).scroll(function(){
 });
 
 
+
+
+
 </script>
+
+<!-- registration forms -->
+<script>
+var currentTab = 0; // Current tab is set to be the first tab (0)
+showTab(currentTab); // Display the current tab
+
+function showTab(n) {
+  // This function will display the specified tab of the form...
+  var x = document.getElementsByClassName("tab");
+  x[n].style.display = "block";
+  //... and fix the Previous/Next buttons:
+  if (n == 0) {
+    document.getElementById("prevBtn").style.display = "none";
+  } else {
+    document.getElementById("prevBtn").style.display = "inline";
+  }
+  if (n == (x.length - 1)) {
+    document.getElementById("nextBtn").innerHTML = "Submit";
+  } else {
+    document.getElementById("nextBtn").innerHTML = "Next";
+  }
+  //... and run a function that will display the correct step indicator:
+  fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+  // This function will figure out which tab to display
+  var x = document.getElementsByClassName("tab");
+  // Exit the function if any field in the current tab is invalid:
+  if (n == 1 && !validateForm()) return false;
+  // Hide the current tab:
+  x[currentTab].style.display = "none";
+  // Increase or decrease the current tab by 1:
+  currentTab = currentTab + n;
+  // if you have reached the end of the form...
+  if (currentTab >= x.length) {
+    // ... the form gets submitted:
+    document.getElementById("regForm").submit();
+    return false;
+  }
+  // Otherwise, display the correct tab:
+  showTab(currentTab);
+}
+
+function validateForm() {
+  // This function deals with validation of the form fields
+  var x, y, i, valid = true;
+  x = document.getElementsByClassName("tab");
+  y = x[currentTab].getElementsByTagName("input");
+  // A loop that checks every input field in the current tab:
+  for (i = 0; i < y.length; i++) {
+    // If a field is empty...
+    if (y[i].value == "") {
+      // add an "invalid" class to the field:
+      y[i].className += " invalid";
+      // and set the current valid status to false
+      valid = false;
+    }
+  }
+  // If the valid status is true, mark the step as finished and valid:
+  if (valid) {
+    document.getElementsByClassName("step")[currentTab].className += " finish";
+  }
+  return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+  // This function removes the "active" class of all steps...
+  var i, x = document.getElementsByClassName("step");
+  for (i = 0; i < x.length; i++) {
+    x[i].className = x[i].className.replace(" active", "");
+  }
+  //... and adds the "active" class on the current step:
+  x[n].className += " active";
+}
+</script>
+
 </body>
 </html>
