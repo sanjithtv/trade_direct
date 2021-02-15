@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <div class="modal fade modalpop-ups-head" id="exampleModalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <!--  <div class="modal fade modalpop-ups-head" id="exampleModalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header-padding">
@@ -66,7 +66,7 @@
                   <h3>Register with Trade Direct:</h3> </div><br>
 
 
-  <!-- One "tab" for each step in the form: -->
+  <!-- One "tab" for each step in the form: --
   <div class="tab">Name:
     <p><input placeholder="First name..." oninput="this.className = ''" name="fname"></p>
     <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
@@ -90,7 +90,7 @@
       <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
     </div>
   </div>
-  <!-- Circles which indicates the steps of the form: -->
+  <!-- Circles which indicates the steps of the form: --
   <div style="text-align:center;margin-top:40px;">
     <span class="step"></span>
     <span class="step"></span>
@@ -108,4 +108,4 @@
       </div>
     </div>
   </div>
-</div>
+</div>-->

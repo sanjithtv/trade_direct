@@ -21,3 +21,4 @@ Route::match(array('GET','POST'),'td/wholesalers','HomeController@addWholesalers
 Route::match(array('GET','POST'),'td/posts','HomeController@addPosts')->name('td/posts');
 Route::get('td/productdetails/{id}', 'HomeController@getProductDetails')->name('td/productdetails');
 Route::get('td/categorylist/{id}', 'HomeController@getCategorylist')->name('td/categorylist');
+Route::post('login','LoginController@index')->name('login');

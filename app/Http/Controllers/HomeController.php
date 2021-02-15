@@ -55,7 +55,7 @@ class HomeController extends Controller
              ->where('td_classified_post_attributes.post_id','=', $id)
             ->get();
       
-        return view('pages.productdetails',['media'=>$media,'post'=>$post,'parent'=>$parent,'attribute'=>$attribute,'featured'=>$featured,'seller'=>$seller]);
+        return view('pages.product_details',['media'=>$media,'post'=>$post,'parent'=>$parent,'attribute'=>$attribute,'featured'=>$featured,'seller'=>$seller]);
     }
 
 

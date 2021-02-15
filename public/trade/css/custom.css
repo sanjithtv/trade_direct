@@ -166,23 +166,21 @@ position: absolute;
 .feature-heart a:hover {background:#efefef; display:block;border-radius:50px;}
 
 .carousel-indicators {
-    position: absolute;
-    /* right: 21px; */
-    bottom: -35px;
-    left: -326px;
-    z-index: 15;
+
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-pack: center;
-    justify-content: center;
+    -ms-flex-pack: left;
+    justify-content: left;
     padding-left: 0;
-    /* margin-right: 15%; */
+
     margin-left:0%;
     list-style: none;
+    bottom: -36px;
+    left:1px;
 }
 
 .carousel-indicators li {
-    width: 79px;
+    width:100px;
 }
 
 a.seller-icon img {
@@ -364,7 +362,7 @@ background: -moz-linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%);
 background: linear-gradient(to bottom, #ffffff 0%,#f6f6f6 47%,#ededed 100%);
 /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 );
- /* IE6-9 */padding-top: 62px;
+ /* IE6-9 */padding-top:50px;
 }
 
 .adposting-top {
@@ -1557,17 +1555,17 @@ opacity: 0;
     padding-top: 0;
 }
 .modal-social-btns button {
-    display: block;
+display: block;
     width: 100%;
     padding: 15px;
     margin: 10px 0;
-    text-transform: capitalize;
+    text-transform: uppercase;
     border: 2px solid #333;
     border-radius: 3px;
-    background: transparent;
-    color: #333;
+    background: #4a8e1b;
+    color: #fff;
     font-weight: 600;
-    text-align: left;
+    text-align: center;
     font-size: 16px;
 }
 

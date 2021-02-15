@@ -34,6 +34,8 @@
         </button>
       </div>
       <div class="modal-body">
+  <p class="text-center"><img  class="t" src="{{ URL::asset('trade/images/logo.png')}}" width="150" align="center"><br>
+
         <div class="wrap-modal-slider">
           <div class="your-class">
             <div>
@@ -65,20 +67,33 @@
           </div>
         </div>
       </div>
-      <div class="modal-social-btns">     
-        <button><i class="fa fa-envelope"></i>
+      <div class="modal-social-btns">   
+
+
+        <div class="tab"><h6>Loging with Your Email Address</h6>
+        <form name="login" action="{{route('login')}}" method="post">
+        {{ csrf_field() }}
+    <p><input placeholder="Enter email id..." oninput="this.className = ''" name="uname"></p>
+    <p><input placeholder="Password..." oninput="this.className = ''" name="pwd" type="password"></p>
+  </div>  
+        <button type="submit"></i>
          
-        Login with email</button>
+        Submit</button>
+</form>
+ <div class="text-right"> <small class="text-center mb-4">  <a href="#" >Forgot password ?</a></small></div>
       </div>
+    
+
       <div class="modal-footer-new">
 <div class="login-email-modal">
- <p>We won't share your personal details with anyone</p>
 <div class="modal-ft-small">If you continue, you are accepting <br>
   <a href="">Trade Direct Terms and Conditions and Privacy Policy</a></div>
       </div>
     </div>
   </div>
 </div>
+
+
 
 
 
