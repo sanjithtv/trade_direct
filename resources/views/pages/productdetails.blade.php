@@ -370,10 +370,5 @@ $(document).ready(function() {
          
       });
 
-
-    
-    
-
-
 });
 </script>
