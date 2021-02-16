@@ -1,6 +1,6 @@
 <div id="header" class="container-fluid fixed-top" style="background:white;">
     <div class="head-top-bar">
-      <div class="logo-left-sec"> <a href="index.html"><img src="{{ URL::asset('trade/images/logo.jpg')}}"></a>
+      <div class="logo-left-sec"> <a href="index.html"><img src="{{ URL::asset('public/trade/images/logo.jpg')}}"></a>
      <div class="sticky-search">
 
   <form class="form-inline col-6   searching-inn">
