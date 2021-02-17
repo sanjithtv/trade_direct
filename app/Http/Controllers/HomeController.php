@@ -87,7 +87,8 @@ class HomeController extends Controller
         ->where([['post_category', '=', $id],['post_deleted', '=', '0'],['expiry_date', '>=', $date]])
         ->get();
         $attribute=td_classified_category_attributes::where([['category_id','=',$id],['deleted','=', '0']])->get();
-        return view('pages.categorylist',['category'=>$category,'attribute'=>$attribute]);
+        //return view('pages.categorylist',['category'=>$category,'attribute'=>$attribute]);
+        return view('pages.category',['category'=>$category,'attribute'=>$attribute]);
         }
     }
 

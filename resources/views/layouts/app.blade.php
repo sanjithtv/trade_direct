@@ -14,6 +14,7 @@
 <div class="bottom-banner"> <img src="{{ URL::asset('trade/images/sell.jpg')}}"> </div>
 <footer>
     @include('includes.footer')
+   
 </footer>
 <div class="copy">
   <div class="container">
@@ -24,7 +25,7 @@
   </div>
 </div>    
 
-<div class="modal fade modalpop-ups-head" id="exampleModalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade modalpop-ups-head modal-open" id="exampleModalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header-padding">
@@ -68,19 +69,20 @@
         </div>
       </div>
       <div class="modal-social-btns">   
+<div id="message"></div>
 
-
-        <div class="tab"><h6>Loging with Your Email Address</h6>
-        <form name="login" action="{{route('login')}}" method="post">
-        {{ csrf_field() }}
-    <p><input placeholder="Enter email id..." oninput="this.className = ''" name="uname"></p>
-    <p><input placeholder="Password..." oninput="this.className = ''" name="pwd" type="password"></p>
+        <div class="tab1"><h6>Loging with Your Email Address</h6>
+        <form name="login" action="{{route('login')}}" method="post" id="login">
+        {{csrf_field()}}
+        @method('POST')
+    <p><input placeholder="Enter email id..." oninput="this.className = ''" name="uname" id="email"></p>
+    <p><input placeholder="Password..." oninput="this.className = ''" name="pwd" type="password" id="pwd"> </p>
   </div>  
-        <button type="submit"></i>
+        <button type="submit" id="save" style="background-color: #4CAF50;color: #ffffff;text-align: center;"></i>
          
         Submit</button>
 </form>
- <div class="text-right"> <small class="text-center mb-4">  <a href="#" >Forgot password ?</a></small></div>
+ <div class="text-right"> <small class="text-center mb-4">  <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalforgotpwd">Forgot password ?</a></small></div>
       </div>
     
 
@@ -88,6 +90,7 @@
 <div class="login-email-modal">
 <div class="modal-ft-small">If you continue, you are accepting <br>
   <a href="">Trade Direct Terms and Conditions and Privacy Policy</a></div>
+  
       </div>
     </div>
   </div>
@@ -97,7 +100,7 @@
 
 
 
-
+  
 
 <script src="{{ URL::asset('trade/js/jquery-3.4.0.min.js')}}"></script> 
 <script src="{{ URL::asset('trade/js/bootstrap.min.js')}}"></script> 
@@ -122,7 +125,49 @@ $(window).scroll(function(){
 
 
 
+
+
 </script>
+
+
+
+<!--<script type="text/javascript">
+       
+            //var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            $('#save').on('click', function() {
+            var email=$('#email').val();
+            var pwd=$('#pwd').val();
+            var url=$('#login').attr('action');
+            //alert(email);
+            $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          });
+                $.ajax({
+                    
+                    url: url,
+                    type: 'POST',
+                
+                    data: {email:email,password:pwd},
+                    dataType: 'JSON',
+                    
+                    success: function (data) { 
+                        //$(".writeinfo").append(data.msg); 
+                        console.log(data);
+                        if(data==1)
+                        {
+                          $('#message').html('success');
+                        }
+                        else if(data==0)
+                        {
+                          $('#message').html('invalid');
+                        }
+                    }
+                }); 
+            });
+         
+    </script>-->
 
 <!-- registration forms -->
 <script>
@@ -199,6 +244,12 @@ function fixStepIndicator(n) {
   x[n].className += " active";
 }
 </script>
+
+
+
+
+
+
 
 </body>
 </html>

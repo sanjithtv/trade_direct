@@ -50,7 +50,7 @@
       </div>
     </div>
 
-  <!--  <div class="modal fade modalpop-ups-head" id="exampleModalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <!-- <div class="modal fade modalpop-ups-head" id="exampleModalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header-padding">
@@ -109,3 +109,75 @@
     </div>
   </div>
 </div>-->
+
+<div class="modal fade modalpop-ups-head modal-open" id="exampleModalforgotpwd" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header-padding">
+       
+        <button type="button" class="modal-hd-close close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"><svg width="25px" height="25px" viewBox="0 0 1024 1024" data-aut-id="icon" class="" fill-rule="evenodd"><path class="rui-22SD7" d="M878.336 85.333l-366.336 366.315-366.336-366.315h-60.331v60.331l366.336 366.336-366.336 366.336v60.331h60.331l366.336-366.336 366.336 366.336h60.331v-60.331l-366.315-366.336 366.315-366.336v-60.331z"></path></svg></span>
+        </button>
+      </div>
+      <div class="modal-body">
+  <p class="text-center"><img  class="t" src="{{ URL::asset('trade/images/logo.png')}}" width="150" align="center"><br>
+
+        <div class="wrap-modal-slider">
+          <div class="your-class">
+            <div>
+              <div class="modal-common-img">
+              <p>
+                
+                <img src="{{ URL::asset('trade/images/git-modal.png')}}">
+              
+                Help make Trade Direct safer place to buy and sell
+              </p>
+              </div>
+            </div>
+            <div>
+               <div class="modal-common-img">
+                <img src="{{ URL::asset('trade/images/favorite-modal.png')}}">
+              <p>
+                Contact and close deals faster
+              </p>
+            </div>
+            </div>
+            <div>
+               <div class="modal-common-img">
+                <img src="{{ URL::asset('trade/images/pointChat-modal.png')}}">
+              <p>
+                Save all your favorite items in one place
+              </p>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-social-btns">   
+<div id="message"></div>
+
+        <div class="tab2"><h6>Forgot password </h6>
+        <form name="login" action="{{route('forgotpwd')}}" method="post" id="login">
+        {{csrf_field()}}
+        @method('POST')
+    <p><input placeholder="Enter email id..." oninput="this.className = ''" name="email" id="email"></p>
+    <p><input placeholder="User Name" oninput="this.className = ''" name="name"  id="pwd"> </p>
+  </div>  
+        <button type="submit" id="save" style="background-color: #4CAF50;color: #ffffff;text-align: center;"></i>
+         
+        Submit</button>
+</form>
+ <div class="text-right"> <small class="text-center mb-4">  </small></div>
+      </div>
+    
+
+      <div class="modal-footer-new">
+<div class="login-email-modal">
+<div class="modal-ft-small"> <br>
+  </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
