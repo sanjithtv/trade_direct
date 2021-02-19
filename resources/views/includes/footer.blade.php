@@ -3,6 +3,8 @@
       <div class="row">
         <div class="col-sm-4 col-lg-3 col-6">
           <div class="ft-links">
+          <input type="hidden" value="{{session()->get('user_id')}}" id="session_id" name="session_id">
+          <input type="hidden" value="{{session()->get('member_id')}}" id="member_id" name="member_id">
             <h4>popular locations</h4>
             <ul>
               <li> <a href="">Kolkata</a> </li>

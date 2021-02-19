@@ -123,11 +123,11 @@
                <div class="wrap-links-catrgy">
                                   <div class="flex-scroll scrollbar style-4">
         <div class="force-overflow">
-          <ul>
+          <ul id="location">
             <li><a href="">Maharashtra (38,215)</a></li>
   
-  <li><a href="">Tamil Nadu (31,642)</a></li>
-  <li><a href="">Kerala (29,902)</a></li>
+  <li data-value="tamilnadu"><a href="">Tamil Nadu (31,642)</a></li>
+  <li  data-value="kerala"><a href="">Kerala (29,902)</a></li>
   <li><a href="">Uttar Pradesh (26,440)</a></li>
   <li><a href="">Karnataka (22,195)</a></li>
   <li><a href="">Delhi (19,748)</a></li>
@@ -198,54 +198,7 @@
             @endforeach
          @endif
     @endforeach
-                    <!--  <li><a href="">
-                <div class="box-flex">
-                  <div class="squrd-flx-box">
-                    <input  name="make" type="checkbox" class="" value="false">
-                  </div>
-                  <span>Hyundai (45,444)</span>
-                </div>
-            </a></li>
-                      <li><a href="">
-                <div class="box-flex">
-                  <div class="squrd-flx-box">
-                    <input  name="make" type="checkbox" class="" value="false">
-                  </div>
-                  <span>Mahindra (27,000)</span>
-                </div>
-            </a></li>
-                      <li><a href="">
-                <div class="box-flex">
-                  <div class="squrd-flx-box">
-                    <input  name="make" type="checkbox" class="" value="false">
-                  </div>
-                  <span>Tata (26,149)</span>
-                </div>
-            </a></li>
-                      <li><a href="">
-                <div class="box-flex">
-                  <div class="squrd-flx-box">
-                    <input  name="make" type="checkbox" class="" value="false">
-                  </div>
-                  <span>Toyota (20,039)</span>
-                </div>
-            </a></li>
-                      <li><a href="">
-                <div class="box-flex">
-                  <div class="squrd-flx-box">
-                    <input  name="make" type="checkbox" class="" value="false">
-                  </div>
-                  <span>Honda (16,492)</span>
-                </div>
-            </a></li>
-                      <li><a href="">
-                <div class="box-flex">
-                  <div class="squrd-flx-box">
-                    <input  name="make" type="checkbox" class="" value="false">
-                  </div>
-                  <span>Ford (11,368)</span>
-                </div>
-            </a></li>-->
+                   
           </ul>
     
   
@@ -356,6 +309,7 @@
       </div>
   
     </div>
+   
      <!-- Accordion card -->
     <div class="card">
   
@@ -523,7 +477,7 @@
     </div>
         </div>
       </div>
-                  
+    
                 </div>
           </div>
         </div>
@@ -534,10 +488,12 @@
   </div>
   <!-- Accordion wrapper -->
   
+  
     </div>
         </div>
     
       </div>
+     
       <div class="col-sm-9 col-lg-9 col-12">
         <div class="used-car-category">
           <element>307,869 ads in <b>India</b></element>
@@ -594,10 +550,91 @@
   </div>
   </div>
   @endsection
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script type="text/javascript">
 
 $(document).ready(function() {
+  
+ 
+
+        
+        
+
+    $('.try').on('click', function() {
+
+
+        
+      var brand=[];
+      $('.try').each(function(){
+        if($(this).is(":checked")){
+          brand.push($(this).val());
+        }
+        
+        
+        
+      });
+      Finalbrand=brand.toString();
+      if(Finalbrand.length==0)
+        {
+          location.reload();
+        }
+
+        /*$("#location").on("click", "a", function(e){
+        e.preventDefault();
+        var $this = $(this).parent();
+        place=$this.data("value");*/
+   
+       
+        
+     //var value=1;
+      $.ajax({
+                url: '',
+                type: "GET",
+                //dataType: "html",
+                cache:false,
+                data: "brand=" + Finalbrand,
+                
+                success:function(data) {
+                 
+               
+                  var data=JSON.parse(data);
+                    console.log(data);
+                   
+                    $('#updateDiv').empty();
+                    
+                    $.each( data, function( key, value ) {
+                     
+                      if(value.featured==1)
+                      {
+                        str= '<h3>Featured</h3><div class="feature-heart"> <svg width="24px" height="24px" viewBox="0 0 1024 1024" data-aut-id="icon" class="" fill-rule="evenodd"><path class="rui-77aaa" d="M830.798 448.659l-318.798 389.915-317.828-388.693c-20.461-27.171-31.263-59.345-31.263-93.033 0-85.566 69.605-155.152 155.152-155.152 72.126 0 132.752 49.552 150.051 116.364h87.777c17.299-66.812 77.905-116.364 150.051-116.364 85.547 0 155.152 69.585 155.152 155.152 0 33.687-10.802 65.862-30.293 91.811zM705.939 124.121c-80.853 0-152.204 41.425-193.939 104.204-41.736-62.778-113.086-104.204-193.939-104.204-128.33 0-232.727 104.378-232.727 232.727 0 50.657 16.194 98.948 47.806 140.897l328.766 402.133h100.189l329.716-403.355c30.662-40.727 46.856-89.018 46.856-139.675 0-128.349-104.398-232.727-232.727-232.727z"></path></svg> </div>';
+                      }
+                      else
+                      {
+                        str='';
+                      }
+                      
+                    //console.log( key + ": " + value.post_title );
+                    $('#updateDiv').append( '<div class="col-sm-4 col-lg-3 col-6 full-width"><a href="http://localhost:8000/td/productdetails/'+value.slug+'"> <div class="table-shows">'+ str +'<div class="fetrur-new"><img src="http://localhost:8080/thumbnail/'+value.photo+'"></div><div class="fetaure-detail"><h4>Rs'+ value.post_price+'</h4><h5>'+value.post_title+'</h5></div></div></a></div>'
+
+                    );
+                  });
+                       
+               
+                }
+            });
+      
+         
+    });
+
+
+});
+</script>
+
+
+ 
+
+<!--$(document).ready(function() {
   
 
 
@@ -619,16 +656,18 @@ $(document).ready(function() {
         {
           location.reload();
         }
+        var value='1';
       //console.log(Finalbrand);
       $.ajax({
                 url: '',
                 type: "GET",
                 //dataType: "html",
                 cache:false,
-                data: "brand=" + Finalbrand,
-                
+                data: "brand=" + Finalbrand+ "&key="+ value,
+               
+               
                 success:function(data) {
-                 
+                  console.log(data);
                
                   var data=JSON.parse(data);
                     console.log(data);
@@ -660,5 +699,4 @@ $(document).ready(function() {
     });
 
 
-});
-</script>
+});-->

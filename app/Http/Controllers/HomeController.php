@@ -10,6 +10,7 @@ use App\td_classified_posts_media;
 use App\td_classified_post_attributes;
 use App\td_classified_category_attributes;
 use App\td_members;
+use App\td_post_member_wishlist;
 
 use DB;
 
@@ -67,12 +68,13 @@ class HomeController extends Controller
 
        if ($request->ajax() && isset($request->brand)) {
             $brand = $request->brand;
+           
             $category = DB::table('td_classified_posts')
                 ->join('td_classified_post_attributes','td_classified_posts.id', '=', 'td_classified_post_attributes.post_id')
                ->join('td_classified_posts_media','td_classified_posts.id', '=', 'td_classified_posts_media.post_id')
                 ->orderBy('featured', 'DESC') 
                 ->whereIN('attribute_value', explode( ',', $brand ))
-                //->where('td_classified_posts_media.deleted','=','0')
+                ->where('td_classified_posts.expiry_date','>=', $date)
                 ->select( 'td_classified_posts.*',
                 DB::raw('(select td_file_name from td_classified_posts_media where post_id  =   td_classified_posts.id  and deleted = 0 order by post_id asc limit 1) as photo')  )
                 ->distinct()
@@ -87,16 +89,38 @@ class HomeController extends Controller
         ->where([['post_category', '=', $id],['post_deleted', '=', '0'],['expiry_date', '>=', $date]])
         ->get();
         $attribute=td_classified_category_attributes::where([['category_id','=',$id],['deleted','=', '0']])->get();
+        
         //return view('pages.categorylist',['category'=>$category,'attribute'=>$attribute]);
-        return view('pages.category',['category'=>$category,'attribute'=>$attribute]);
+        return view('pages.category',['category'=>$category,'attribute'=>$attribute,'cat_id'=>$id]);
         }
     }
 
+
+
+    public function wishlist(Request $request)
+    {
+       $member_id=$request->post('member_id');
+        $post_id=$request->post('post_id');
+        
+        $wishlist = new td_post_member_wishlist([
+	        'member_id' => $member_id,
+	        'post_id' => $post_id,
+	        'deleted' => '0',
+	        
+      	]);
+        $wishlist->save();
+        $data=$wishlist->id();
+        echo $data;
+       // return json_encode($data);
+
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
+     * 
      */
+
     public function create()
     {
         //

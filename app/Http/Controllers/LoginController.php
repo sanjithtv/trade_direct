@@ -13,6 +13,13 @@ class LoginController extends Controller
 {
     public function index(Request $request)
     {
+        if($request->session()->get('user_id')!=""){
+                
+            $member=td_users::where([['id', '=', $request->session()->get('user_id')]])->first();
+            return view('pages.profile',compact('member'));
+        }
+        else{
+
         $email=$request->post('uname');
         $password=$request->post('pwd');
        
@@ -22,6 +29,7 @@ class LoginController extends Controller
 
             $request->session()->put('user_id',$user->id);
              $request->session()->put('user_name',$user->name);
+             $request->session()->put('member_id',$user->member_id);
             // echo  $request->session()->get('user_name');
             if($request->session()->get('user_id')!=""){
                 
@@ -34,6 +42,7 @@ class LoginController extends Controller
         else{
             return redirect()->action('HomeController@index');
         }
+    }
     }
 
     public function Forgotpwd(Request $request)

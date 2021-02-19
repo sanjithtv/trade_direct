@@ -123,6 +123,49 @@ $(window).scroll(function(){
 
 
 
+  
+  $('#wishlist').on('click', function() {
+    var session_id=$('#session_id').val();
+    var member_id=$('#member_id').val();
+    
+    var post_id=$('.post_id').val();
+    alert(post_id);
+  
+    alert(session_id);
+    alert(member_id);
+    
+ 
+    /*if(session_id)
+    {
+      $.ajax({
+        type: 'post',
+        url: 'wishlist',
+        dataType: 'json',
+        data: {
+          '_token': $('input[name=_token]').val(),
+          'member_id': member_id,
+          'post_id': post_id,
+          
+        },
+        success: function (data) {
+          console.log(data);
+          if(data)
+          {
+            
+            //alert('Product added to whishlist successfully.');
+          }
+          
+        },
+        
+      });
+    }
+    else{
+      $('#exampleModalLogin').modal('show');
+    }*/
+  });
+  
+  
+
 
 
 
