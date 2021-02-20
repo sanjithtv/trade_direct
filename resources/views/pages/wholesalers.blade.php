@@ -23,6 +23,8 @@
 
 
 <div>
+
+<div style="display:none">{{ session()->get('user_name') }}</div>
     <div class="recomment-profile">
       <div class="container">
         <div class="sub-header ">
