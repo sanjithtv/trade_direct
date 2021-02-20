@@ -46,12 +46,13 @@
               </svg></a> <a href="" target="_blank" ><svg width="48px" height="48px" viewBox="0 0 1024 1024" data-aut-id="icon" class="" fill-rule="evenodd">
               <path class="rui-77aaa" d="M512 85.321c235.648 0 426.667 191.019 426.667 426.667s-191.019 426.667-426.667 426.667c-235.648 0-426.667-191.019-426.667-426.667s191.019-426.667 426.667-426.667zM512 150.601c-199.595 0-361.429 161.792-361.429 361.387 0 199.637 161.835 361.429 361.429 361.429s361.429-161.792 361.429-361.429c0-199.595-161.835-361.387-361.429-361.387zM382.605 321.86l311.125 190.123-311.125 190.165v-380.288z"></path>
               </svg></a> </div>
-            <div class="store-btns"> <a href=""><img src="{{ URL::asset('trade/images/appstore.png')}}"></a> <a href=""><img src="{{ URL::asset('trade/images/playstore.png')}}"></a> </div>
+            <div class="store-btns"> <a href=""><img src="{{ URL::asset('public/trade/images/appstore.png')}}"></a> <a href=""><img src="{{ URL::asset('public/trade/images/playstore.png')}}"></a> </div>
           </div>
         </div>
       </div>
     </div>
 
+<<<<<<< HEAD
   <!-- <div class="modal fade modalpop-ups-head" id="exampleModalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -183,3 +184,6 @@
 </div>
 
 
+=======
+  
+>>>>>>> register

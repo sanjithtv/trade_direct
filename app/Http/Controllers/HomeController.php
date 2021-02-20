@@ -55,7 +55,6 @@ class HomeController extends Controller
             ->where([['category_id', '=', $post->post_category],['td_classified_category_attributes.deleted', '=', '0'],['status', '=', '1']])
              ->where('td_classified_post_attributes.post_id','=', $id)
             ->get();
-      
         return view('pages.product_details',['media'=>$media,'post'=>$post,'parent'=>$parent,'attribute'=>$attribute,'featured'=>$featured,'seller'=>$seller]);
     }
 
