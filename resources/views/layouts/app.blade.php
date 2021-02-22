@@ -124,50 +124,48 @@ $(window).scroll(function(){
 
 
   
-  $('#wishlist').on('click', function() {
+  $('.wishlist').on('click', function() {
     var session_id=$('#session_id').val();
     var member_id=$('#member_id').val();
+    var post_id=$(this).closest("a").find('.post_id').val();
     
-    var post_id=$('.post_id').val();
-    alert(post_id);
   
-    alert(session_id);
-    alert(member_id);
-    
- 
-    /*if(session_id)
+    if(session_id)
     {
+      var data={
+                        "_token":$('input[name=_token]').val(),
+                        'member_id': member_id,
+                        'post_id': post_id,
+                    };
       $.ajax({
         type: 'post',
         url: 'wishlist',
         dataType: 'json',
-        data: {
-          '_token': $('input[name=_token]').val(),
-          'member_id': member_id,
-          'post_id': post_id,
-          
-        },
+        cache:false,
+        data: data,
         success: function (data) {
           console.log(data);
           if(data)
           {
             
-            //alert('Product added to whishlist successfully.');
+           //$('.feature-heart').empty();
+           //$('.feature-heart').append('<i class="fa fa-heart" aria-hidden="true"></i>');
+           alert('product added to wishlist');
           }
+         
           
         },
+        error : function(er){
+          console.log(er.data)
+        }
         
       });
     }
     else{
       $('#exampleModalLogin').modal('show');
-    }*/
+    }
+
   });
-  
-  
-
-
-
 
 
 </script>

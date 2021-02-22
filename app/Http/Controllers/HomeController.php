@@ -112,9 +112,8 @@ class HomeController extends Controller
 	        
       	]);
         $wishlist->save();
-        $data=$wishlist->id();
-        echo $data;
-       // return json_encode($data);
+        $data=$wishlist->id;
+        return json_encode($data);
 
     }
     /**
