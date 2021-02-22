@@ -10,6 +10,7 @@ use App\td_classified_posts_media;
 use App\td_classified_post_attributes;
 use App\td_classified_category_attributes;
 use App\td_members;
+use App\td_geo_states;
 use App\td_post_member_wishlist;
 
 use DB;
@@ -68,6 +69,7 @@ class HomeController extends Controller
 
        if ($request->ajax() && isset($request->brand)) {
             $brand = $request->brand;
+            //$location = $request->location;
            
             $category = DB::table('td_classified_posts')
                 ->join('td_classified_post_attributes','td_classified_posts.id', '=', 'td_classified_post_attributes.post_id')
@@ -89,9 +91,10 @@ class HomeController extends Controller
         ->where([['post_category', '=', $id],['post_deleted', '=', '0'],['expiry_date', '>=', $date]])
         ->get();
         $attribute=td_classified_category_attributes::where([['category_id','=',$id],['deleted','=', '0']])->get();
+        $location=td_geo_states::get();
         
         //return view('pages.categorylist',['category'=>$category,'attribute'=>$attribute]);
-        return view('pages.category',['category'=>$category,'attribute'=>$attribute,'cat_id'=>$id]);
+        return view('pages.category',['category'=>$category,'attribute'=>$attribute,'cat_id'=>$id,'location'=>$location]);
         }
     }
 
