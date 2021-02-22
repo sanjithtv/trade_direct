@@ -124,20 +124,11 @@
                                   <div class="flex-scroll scrollbar style-4">
         <div class="force-overflow">
           <ul id="location">
-            <li><a href="">Maharashtra (38,215)</a></li>
+          @foreach($location as $data)
+            <li data-value="{{$data->id}}"><a>{{$data->name}}</a></li>
+            @endforeach
   
-  <li data-value="tamilnadu"><a href="">Tamil Nadu (31,642)</a></li>
-  <li  data-value="kerala"><a href="">Kerala (29,902)</a></li>
-  <li><a href="">Uttar Pradesh (26,440)</a></li>
-  <li><a href="">Karnataka (22,195)</a></li>
-  <li><a href="">Delhi (19,748)</a></li>
-  <li><a href="">Gujarat (19,695)</a></li>
-  <li><a href="">Punjab (17,072)</a></li>
-  <li><a href="">Telangana (16,483)</a></li>
-  <li><a href="">Haryana (11,200)</a></li>
-  <li><a href="">Rajasthan (10,042)</a></li>
-  <li><a href="">Madhya Pradesh (9,623)</a></li>
-  <li><a href="">Andhra Pradesh (9,103)</a></li>
+ 
           </ul>
         </div>
       </div>
@@ -580,7 +571,7 @@ $(document).ready(function() {
           location.reload();
         }
 
-        /*$("#location").on("click", "a", function(e){
+       /* $("#location").on("click", "a", function(e){
         e.preventDefault();
         var $this = $(this).parent();
         place=$this.data("value");*/
@@ -624,7 +615,7 @@ $(document).ready(function() {
                 }
             });
       
-         
+          
     });
 
 
