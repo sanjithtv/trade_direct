@@ -19,7 +19,7 @@
       <a class="post-plus mobile-view" href="">+ Post Ad</a> 
       </div>
       <div class="top-right-menu laptop-menu">
-      <div class="div-over-right"> <a href="login.html" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalLogin">Login</a> <a href="registration.html"  data-toggle="modal" data-target="#exampleModalRegister">Register</a> </div>
+      <div class="div-over-right"> <a href="login.html" data-dismiss="modal" data-toggle="modal" data-target="#exampleModalLogin">Login</a> <a href="registration.html"  data-toggle="modal" data-target="#exampleModalRegister">Register</a>@if(session()->get('member_id'))<a href="{{route('chatinbox',session()->get('member_id'))}}" >Chat</a>@endif </div>
         <div class="div-over-left"> <!--<a href="{{ route('td/wholesalers') }}">Wholesalers / Manifactures</a> <a href="#">Auction</a> 
         <a class="post-plus laptop-view" href="{{ route('td/posts') }}">+ Post Ad</a> 
           <a class="post-user-icon" href=""> <img src="{{ URL::asset('trade/images/user.jpg')}}"> </a> -->

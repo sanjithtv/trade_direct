@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+@if(session('success'))
+<script>
+$(function() {
+    $('#exampleModalLogin').modal('show');
+});
+</script>
+@endif
 
 <!-- category detail section -->
 <div class="container">
@@ -180,7 +187,14 @@
                 </tr>
     
     <tr><td height="84" colspan="2">
-                  <button class="btn btn-primary btn-chat  btn-block">Chat with Sellter</button>
+      <form action="{{route('chat')}}" method="post" id="chat_msg">
+      {{csrf_field()}}
+                @method('POST')
+        <input type="hidden" value="{{$post->id}}" name="post_id" id="post_id">
+        <!--<input type="hidden" value="{{$data->name}}" name="member_name" id="member_name">-->
+        <input type="hidden" value="{{$post->post_title}}" name="post_title" id="post_title">
+                  <button type="submit" class="btn btn-primary btn-chat  btn-block" id="chat">Chat with Sellter</button>
+                </form>
     </td>
     
     
@@ -282,6 +296,7 @@
       <!-- Featured Items -->
     
     </div>
+    <div class="bottom-banner"> <img src="{{ URL::asset('trade/images/sell.jpg')}}"> </div>
     @endsection
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <script type="text/javascript">
@@ -304,9 +319,51 @@ $(document).ready(function() {
       });
 
 
+      $('#chat').on('click', function() {
+  
+    var session_id=$('#session_id').val();
+    var post_id=$('#post_id').val();
+    var post_title=$('#post_title').val();
+   
     
-    
+    if(session_id)
+    {
+     
+      var data={
+                        "_token":$('input[name=_token]').val(),
+                        'post_id': post_id,
+                        'post_title': post_title,
+                    };
+      $.ajax({
+        type: 'post',
+        url: 'chat',
+        dataType: 'json',
+        cache:false,
+        data: data,
+        
+    }
+        success: function (data) {
+         
+          
+        },
+        error : function(er){
+          console.log(er.data)
+        }
+        
+      });
+    }
+    else{
+      $('#exampleModalLogin').modal('show');
+    }
+
+
+  });
 
 
 });
+
+
+
+  
+  
 </script>

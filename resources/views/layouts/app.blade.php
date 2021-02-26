@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     @include('includes.head')
-</head>
-<body>
+
 <header>
     @include('includes.header')
 </header>
+<body>
 <div class="menu-lisiting-top">
 @include('includes.menu')
 </div>
 @yield('content')
-<div class="bottom-banner"> <img src="{{ URL::asset('trade/images/sell.jpg')}}"> </div>
+<!--<div class="bottom-banner"> <img src="{{ URL::asset('trade/images/sell.jpg')}}"> </div>-->
 <footer>
     @include('includes.footer')
    
@@ -24,6 +24,7 @@
     </div>
   </div>
 </div>    
+
 
 <div class="modal fade modalpop-ups-head modal-open" id="exampleModalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -121,10 +122,11 @@ $(window).scroll(function(){
     }
 });
 
+ 
 
 
   
-  $('.wishlist').on('click', function() {
+$('.wishlist').on('click', function() {
     var session_id=$('#session_id').val();
     var member_id=$('#member_id').val();
     var post_id=$(this).closest("a").find('.post_id').val();
@@ -165,50 +167,13 @@ $(window).scroll(function(){
       $('#exampleModalLogin').modal('show');
     }
 
+
   });
+  
+  
 
 
 </script>
-
-
-
-<!--<script type="text/javascript">
-       
-            //var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-            $('#save').on('click', function() {
-            var email=$('#email').val();
-            var pwd=$('#pwd').val();
-            var url=$('#login').attr('action');
-            //alert(email);
-            $.ajaxSetup({
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-          });
-                $.ajax({
-                    
-                    url: url,
-                    type: 'POST',
-                
-                    data: {email:email,password:pwd},
-                    dataType: 'JSON',
-                    
-                    success: function (data) { 
-                        //$(".writeinfo").append(data.msg); 
-                        console.log(data);
-                        if(data==1)
-                        {
-                          $('#message').html('success');
-                        }
-                        else if(data==0)
-                        {
-                          $('#message').html('invalid');
-                        }
-                    }
-                }); 
-            });
-         
-    </script>-->
 
 <!-- registration forms -->
 <script>
@@ -285,6 +250,53 @@ function fixStepIndicator(n) {
   x[n].className += " active";
 }
 </script>
+
+
+
+<!--<script type="text/javascript">
+       
+            //var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            $('#save').on('click', function() {
+            var email=$('#email').val();
+            var pwd=$('#pwd').val();
+            var url=$('#login').attr('action');
+            //alert(email);
+            $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          });
+                $.ajax({
+                    
+                    url: url,
+                    type: 'POST',
+                
+                    data: {email:email,password:pwd},
+                    dataType: 'JSON',
+                    
+                    success: function (data) { 
+                        //$(".writeinfo").append(data.msg); 
+                        console.log(data);
+                        if(data==1)
+                        {
+                          $('#message').html('success');
+                        }
+                        else if(data==0)
+                        {
+                          $('#message').html('invalid');
+                        }
+                    }
+                }); 
+            });
+         
+    </script>-->
+
+
+
+
+
+
+
 
 
 

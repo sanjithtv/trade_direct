@@ -52,6 +52,46 @@
       </div>
     </div>
 
+
+<!-- registration form modal --
+<div class="modal fade modalpop-ups-head" id="exampleModalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header-padding">
+       
+        <button type="button" class="modal-hd-close close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true"><svg width="25px" height="25px" viewBox="0 0 1024 1024" data-aut-id="icon" class="" fill-rule="evenodd"><path class="rui-22SD7" d="M878.336 85.333l-366.336 366.315-366.336-366.315h-60.331v60.331l366.336 366.336-366.336 366.336v60.331h60.331l366.336-366.336 366.336 366.336h60.331v-60.331l-366.315-366.336 366.315-366.336v-60.331z"></path></svg></span>
+        </button>
+      </div>
+      <div class="modal-body">
+  <div class="text-center mb-4">
+            <img src="{{ URL::asset('public/trade/images/logo.png')}}" width="150" align="center"><br><br>
+                  <h3>Register with Trade Direct:</h3> </div>
+      </div>
+      <div class="modal-social-btns">          
+        <form name="create_role" action="{{route('register') }}" method="POST">
+        {{csrf_field()}}
+                @method('POST')
+    Name:
+    <p><input placeholder="Name..."  name="fname" id="fname" required></p>
+    Email:
+    <p><input placeholder="Email..."  name="email_id" id="email_id" required></p>
+    Contact Number:     
+    <p><input placeholder="Enter Phone..." required id="phone" name="phone"></p>
+    Password:     
+    <p><input type="password" placeholder="Enter password..." required id="password" name="password"></p>
+ 
+        <button type="submit"></i>Register</button>
+</form>
+</div>
+      <div class="modal-footer-new">
+<div class="login-email-modal">
+<div class="modal-ft-small">While you registering, you are accepting <br>
+  <a href="">Trade Direct Terms and Conditions and Privacy Policy</a></div>
+      </div>
+    </div>
+  </div>
+</div>
   <!-- <div class="modal fade modalpop-ups-head" id="exampleModalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -183,3 +223,4 @@
 </div>
 
 
+  

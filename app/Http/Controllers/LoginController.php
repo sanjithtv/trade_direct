@@ -35,10 +35,8 @@ class LoginController extends Controller
                 
                 $member=td_users::where([['id', '=', $request->session()->get('user_id')]])->first();
                 return view('pages.profile',compact('member'));
-            }
-            
-            
-          }
+                }
+             }
         else{
             return redirect()->action('HomeController@index');
         }

@@ -176,5 +176,9 @@
     </section>
   </div>
   
+  <div class="bottom-banner"> <img src="{{ URL::asset('trade/images/sell.jpg')}}"> </div>
+  
+
+
   @endsection
  

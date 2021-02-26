@@ -107,5 +107,44 @@ class TradeHelp {
         return $data->name;
     }
 
+    public static function get_post($id=""){
+		$data = DB::table('td_classified_posts')
+
+        ->where('id',$id)->first('post_title as post');
+
+       
+
+        return $data->post;
+    }
+
+    public static function get_post_member($id=""){
+		$data = DB::table('td_members')
+
+        ->where('id',$id)->first('name as member');
+
+       
+
+        return $data->member;
+    }
+
+    public static function get_last_msg($id=""){
+		//$data =  DB::'(select msg_content from td_classified_post_chat_messages where chat_id  = '.$id.' and deleted = 0 order by chat_id desc limit 1) as msg)')->first();
+       $data= DB::table('td_classified_post_chat_messages')
+       ->where('chat_id','=',$id)
+       ->orderBy('created_at', 'desc')->first('msg_content as msg');
+       
+
+        return $data->msg;
+    }
+    public static function get_last_date($id=""){
+		//$data =  DB::'(select msg_content from td_classified_post_chat_messages where chat_id  = '.$id.' and deleted = 0 order by chat_id desc limit 1) as msg)')->first();
+       $data= DB::table('td_classified_post_chat_messages')
+       ->where('chat_id','=',$id)
+       ->orderBy('created_at', 'desc')->first('created_at as date');
+       
+
+        return $data->date;
+    }
+
 
 }
