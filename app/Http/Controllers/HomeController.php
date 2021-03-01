@@ -60,42 +60,7 @@ class HomeController extends Controller
     }
 
 
-    public function getCategorylist(Request $request,$str)
-    {
-
-        $id=substr($str, strrpos($str, '-') + 1);
-        $date=date("Y-m-d");
-
-       if ($request->ajax() && isset($request->brand)) {
-            $brand = $request->brand;
-            //$location = $request->location;
-           
-            $category = DB::table('td_classified_posts')
-                ->join('td_classified_post_attributes','td_classified_posts.id', '=', 'td_classified_post_attributes.post_id')
-               ->join('td_classified_posts_media','td_classified_posts.id', '=', 'td_classified_posts_media.post_id')
-                ->orderBy('featured', 'DESC') 
-                ->whereIN('attribute_value', explode( ',', $brand ))
-                ->where('td_classified_posts.expiry_date','>=', $date)
-                ->select( 'td_classified_posts.*',
-                DB::raw('(select td_file_name from td_classified_posts_media where post_id  =   td_classified_posts.id  and deleted = 0 order by post_id asc limit 1) as photo')  )
-                ->distinct()
-                ->get();
-            return json_encode($category);
-            
-        }
-        else{
-            
-       
-        $category = td_classified_posts::orderBy('featured', 'DESC')
-        ->where([['post_category', '=', $id],['post_deleted', '=', '0'],['expiry_date', '>=', $date]])
-        ->get();
-        $attribute=td_classified_category_attributes::where([['category_id','=',$id],['deleted','=', '0']])->get();
-        $location=td_geo_states::get();
-        
-        //return view('pages.categorylist',['category'=>$category,'attribute'=>$attribute]);
-        return view('pages.category',['category'=>$category,'attribute'=>$attribute,'cat_id'=>$id,'location'=>$location]);
-        }
-    }
+    
 
 
 

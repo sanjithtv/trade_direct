@@ -107,5 +107,32 @@ class TradeHelp {
         return $data->name;
     }
 
+    public static function post_category_reverse_map($category,$category_id){
+        if($category_id){
+            $data_2 = DB::table('td_classified_category')->where([['id', '=', $category_id],['deleted', '=', '0']])->first();
+            if($data_2->parent>0){
+                $data_1 = DB::table('td_classified_category')->where([['id', '=', $data_2->parent],['deleted', '=', '0']])->first();
+                if($data_1->parent==0){
+                    $category_map [$data_1->id]['name']=$data_1->name;
+                    $category_map [$data_1->id][$data_2->id]['name']=$data_2->name;
+                }
+            }
+        }
+        
+        return $category_map;
+    }
+
+
+    public static function post_category_filters($attribute_name=""){
+        $filter_array = array('brands'=>'Brands','kmsdriven'=>'Kms Driven','year'=>'Year','noofowners'=>'No of Owners');
+        if($attribute_name){
+            foreach ($filter_array as $key => $value) {
+                if($value==$attribute_name){
+                    return $key;
+                }
+            }
+        }    
+        return false;
+    }
 
 }

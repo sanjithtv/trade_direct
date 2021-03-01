@@ -11,7 +11,7 @@
 @include('includes.menu')
 </div>
 @yield('content')
-<div class="bottom-banner"> <img src="{{ URL::asset('public/trade/images/sell.jpg')}}"> </div>
+<div class="bottom-banner"> <img src="{{ URL::asset('trade/images/sell.jpg')}}"> </div>
 <footer>
     @include('includes.footer')
    
@@ -25,7 +25,6 @@
   </div>
 </div>    
 
-<<<<<<< HEAD
 <div class="modal fade modalpop-ups-head modal-open" id="exampleModalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -122,8 +121,6 @@ $(window).scroll(function(){
     }
 });
 
-=======
->>>>>>> register
 
 
   
@@ -166,19 +163,7 @@ $(window).scroll(function(){
       $('#exampleModalLogin').modal('show');
     }*/
   });
-  
-  
-
-
-
-
-
-
-<<<<<<< HEAD
-
-
-<!--<script type="text/javascript">
-       
+ 
             //var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             $('#save').on('click', function() {
             var email=$('#email').val();
@@ -212,30 +197,10 @@ $(window).scroll(function(){
                     }
                 }); 
             });
-         
-    </script>-->
-
-<!-- registration forms -->
-<script>
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
-=======
->>>>>>> register
 
-
-
-<script src="{{ URL::asset('public/trade/js/jquery-3.4.0.min.js')}}"></script> 
-<script src="{{ URL::asset('public/trade/js/bootstrap.min.js')}}"></script> 
-<script src="{{ URL::asset('public/trade/js/slick.min.js')}}"></script> 
-<script src="{{ URL::asset('public/trade/js/wow.min.js')}}"></script> 
-<script src="{{ URL::asset('public/trade/js/custom.js')}}"></script>
-
-
-
-
-
-
-
+</script>
 
 </body>
 </html>
