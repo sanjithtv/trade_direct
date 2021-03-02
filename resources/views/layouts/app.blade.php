@@ -211,7 +211,8 @@ function nextPrev(n) {
   // if you have reached the end of the form...
   if (currentTab >= x.length) {
     // ... the form gets submitted:
-    document.getElementById("regForm").submit();
+    document.getElementById("saveDetails").submit();
+    
     return false;
   }
   // Otherwise, display the correct tab:

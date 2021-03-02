@@ -91,8 +91,8 @@
       </div>
     </div>
   </div>
-</div>
-  <!-- <div class="modal fade modalpop-ups-head" id="exampleModalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+</div>-->
+  <div class="modal fade modalpop-ups-head" id="exampleModalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header-padding">
@@ -106,9 +106,11 @@
           <div class="text-center mb-4">
             <img src="{{ URL::asset('trade/images/logo.png')}}" width="150" align="center"><br>
                   <h3>Register with Trade Direct:</h3> </div><br>
+                  <form name="create_role" action="{{route('register') }}" method="POST" id="saveDetails">
+        {{csrf_field()}}
+                @method('POST')
 
-
-  <!-- One "tab" for each step in the form: --
+  <!-- One "tab" for each step in the form: -->
   <div class="tab">Name:
     <p><input placeholder="First name..." oninput="this.className = ''" name="fname"></p>
     <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
@@ -116,12 +118,14 @@
   <div class="tab">Contact Info:
     <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
     <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
+    <p><textarea placeholder="address" oninput="this.className = ''" name="address" style="width:100%"></textarea></p>
   </div>
-  <div class="tab">Date Of Birth:
+<!--<div class="tab">Date Of Birth:
     <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
     <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
     <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
-  </div>
+    
+  </div>-->
   <div class="tab">Login Info:
     <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
     <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
@@ -132,12 +136,12 @@
       <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
     </div>
   </div>
-  <!-- Circles which indicates the steps of the form: --
+  <!-- Circles which indicates the steps of the form: -->
   <div style="text-align:center;margin-top:40px;">
     <span class="step"></span>
     <span class="step"></span>
     <span class="step"></span>
-    <span class="step"></span>
+   <!-- <span class="step"></span>-->
   </div>
 </form>
       </div>
@@ -150,9 +154,9 @@
       </div>
     </div>
   </div>
-</div>-->
+</div>
 
-<div class="modal fade modalpop-ups-head modal-open" id="exampleModalforgotpwd" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!--<div class="modal fade modalpop-ups-head modal-open" id="exampleModalforgotpwd" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header-padding">
@@ -220,7 +224,7 @@
       </div>
     </div>
   </div>
-</div>
+</div>-->
 
 
   

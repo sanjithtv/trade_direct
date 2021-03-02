@@ -14,7 +14,7 @@ class td_users extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'password', 'user_type','member_id','email','phone', 'status','deleted'
+        'name', 'password', 'user_type','member_id','email','phone','created_by', 'status','deleted'
     ];
 
     /**
