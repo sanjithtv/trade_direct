@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use App\Mail\SendMail;
 use App\td_users;
+use App\td_members;
 
 class LoginController extends Controller
 {
@@ -34,7 +35,8 @@ class LoginController extends Controller
             if($request->session()->get('user_id')!=""){
                 
                 $member=td_users::where([['id', '=', $request->session()->get('user_id')]])->first();
-                return view('pages.profile',compact('member'));
+                //return view('pages.profile',compact('member'));
+                return redirect()->action('HomeController@index');
                 }
              }
         else{
@@ -74,6 +76,39 @@ class LoginController extends Controller
     {
         $request->session()->flush();
         return redirect()->action('HomeController@index');  
+    }
+    public function userProfile(Request $request)
+    {
+        //$user=td_users::where([['id', '=', $request->session()->get('user_id')]])->first();
+        if($request->session()->get('user_id'))
+        {
+        $member=td_members::where([['id', '=', $request->session()->get('member_id')]])->first();
+        return view('pages.profile',compact('member'));
+        }
+        else{
+            return redirect()->action('HomeController@index'); 
+        }
+    }
+
+    public function updateProfile(Request $request)
+    {
+       $name=$request->post('name');
+       $address=$request->post('address');
+       $phone=$request->post('phone');
+       $email=$request->post('email');
+       $member=td_members::find($request->session()->get('member_id'));
+       $member->name=$name;
+       $member->address=$address;
+       $member->phone=$phone;
+       $member->email=$email;
+       $member->update();
+       $user=td_users::find($request->session()->get('user_id'));
+       $user->name=$name;
+       $user->phone=$phone;
+       $user->email=$email;
+       $user->update();
+       return redirect()->route('profile')
+                        ->with('success','Profile Updated successfully.');
     }
    
 }

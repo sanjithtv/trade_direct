@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+
 <!-- Search section -->
 <div class="search-width-items">
   <h2>Find Your Best Classified</h2>

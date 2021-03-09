@@ -2,469 +2,98 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- Search section -->
-<div class="search-width-items">
-  <h2>Find Your Best Classified</h2>
-  <h6>It is a long established fact that a reader will be distracted by the readable.</h6>
-
-<div class="search-bar">
-  <form class="form-inline col-6 ml-auto mr-auto my-lg-0  searching-inn">
-    <select class="form-control curving-select">
-      <option>All India</option>
-    </select>
-    <input class="form-control w-50" type="search" placeholder="Search" aria-label="Search">
-    <button class="form-control search-inn-color" type="submit">Search</button>
-  </form>
-</div>
-</div>
-<!-- Search section ends-->
-
-
-
 
 <div>
-
-<div style="display:none">{{ session()->get('user_name') }}</div>
-    <div class="recomment-profile">
-      <div class="container">
-        <div class="sub-header ">
-          <div class="swipe-tabs">
-            <div class="swipe-tab">Dress</div>
-            <div class="swipe-tab">Furniture</div>
-            <div class="swipe-tab">Toys</div>
-            <div class="swipe-tab">Electronics</div>
-            <div class="swipe-tab">Cars</div>
-            <div class="swipe-tab">Bike</div>
-          </div>
+  <div class="recomment-profile">
+    <div class="container">
+      <div class="sub-header ">
+        <div class="swipe-tabs">
+        <div class="swipe-tab"><li class="category"  style="list-style-type:none"><input type="hidden" class="cat_id" value="0">All</li></div>
+          @foreach($category as $value)
+         <div class="swipe-tab"> <li class="category"  style="list-style-type:none"><input type="hidden" class="cat_id" value="{{$value->id}}">{{$value->name}}</li></div>
+          @endforeach
+         <!-- <div class="swipe-tab">Furniture</div>
+          <div class="swipe-tab">Toys</div>
+          <div class="swipe-tab">Electronics</div>
+          <div class="swipe-tab">Cars</div>
+          <div class="swipe-tab">Bike</div>-->
         </div>
-        <div class="main-container">
-          <div class="swipe-tabs-container ">
-            <div class="swipe-tab-content">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/levis.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Levi's</h5>
-                        <h6>Phone: 0123 456 77</h6>
-                        <h6>Web: www.levis.in</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/table.JPG"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Seemti</h5>
-                        <h6>Phone: 0123 456 77</h6>
-                        <h6>Web: www.seemati.in</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/table3.JPG"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Seemti</h5>
-                        <h6>Phone: 0123 456 77</h6>
-                        <h6>Web: www.seemati.in</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/table2.JPG"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Seemti</h5>
-                        <h6>Phone: 0123 456 77</h6>
-                        <h6>Web: www.seemati.in</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/table.JPG"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Seemti</h5>
-                        <h6>Phone: 0123 456 77</h6>
-                        <h6>Web: www.seemati.in</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/table3.JPG"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Seemti</h5>
-                        <h6>Phone: 0123 456 77</h6>
-                        <h6>Web: www.seemati.in</h6>
-                      </div>
+      </div>
+      <div class="main-container">
+        <div class="swipe-tabs-container ">
+          <div class="swipe-tab-content">
+            <div class="card-body">
+              <div class="row" id="suppliers">
+                @foreach($suppliers as $data)
+                <div class="col-sm-4 col-lg-3 col-6 full-width">
+                  <div class="table-shows">
+                    <div class="fetrur-new"><img src="{{ URL::asset('trade/images/favorite-modal.PNG')}}"></div>
+                    <div class="fetaure-detail">
+                      <h5>Company: {{$data->name}}</h5>
+                      <h5>Phone: {{$data->phone}}</h5>
+                      <!--<h5>Web: www.levis.in</h5>-->
                     </div>
                   </div>
                 </div>
-                <div class="pagination-one">
-                  <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                      <li class="page-item"><a class="page-link
-        active" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                  </nav>
-                </div>
+                @endforeach
+                
               </div>
-            </div>
-            <div class="swipe-tab-content">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/table.JPG"></div>
-                      <div class="fetaure-detail">
-                        <h5>Brand New (6*6)</h5>
-                        <h6>Duplex for sale</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/table.JPG"></div>
-                      <div class="fetaure-detail">
-                        <h5>Brand New (6*6)</h5>
-                        <h6>Duplex for sale</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/table3.JPG"></div>
-                      <div class="fetaure-detail">
-                        <h5>Brand New (6*6)</h5>
-                        <h6>Duplex for sale</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/table2.JPG"></div>
-                      <div class="fetaure-detail">
-                        <h5>Brand New (6*6)</h5>
-                        <h6>Duplex for sale</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/table.JPG"></div>
-                      <div class="fetaure-detail">
-                        <h5>Brand New (6*6)</h5>
-                        <h6>Duplex for sale</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/table3.JPG"></div>
-                      <div class="fetaure-detail">
-                        <h5>Brand New (6*6)</h5>
-                        <h6>Duplex for sale</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="pagination-one">
-                  <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                      <li class="page-item"><a class="page-link
-        active" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
-            </div>
-            <div class="swipe-tab-content">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/toys.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Toy Land</h5>
-                        <h6>Phone: 123 566</h6>
-                        <h6>Web: www.toy.com</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/toys.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Toy Land</h5>
-                        <h6>Phone: 123 566</h6>
-                        <h6>Web: www.toy.com</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/toys.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Toy Land</h5>
-                        <h6>Phone: 123 566</h6>
-                        <h6>Web: www.toy.com</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/toys.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Toy Land</h5>
-                        <h6>Phone: 123 566</h6>
-                        <h6>Web: www.toy.com</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/toys.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Toy Land</h5>
-                        <h6>Phone: 123 566</h6>
-                        <h6>Web: www.toy.com</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="pagination-one">
-                  <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                      <li class="page-item"><a class="page-link
-        active" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
-            </div>
-            <div class="swipe-tab-content">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/electronics.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Bismi</h5>
-                        <h6>Phone: 123 566</h6>
-                        <h6>Web: www.bismi.com</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/toys.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Toy Land</h5>
-                        <h6>Phone: 123 566</h6>
-                        <h6>Web: www.toy.com</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/toys.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Toy Land</h5>
-                        <h6>Phone: 123 566</h6>
-                        <h6>Web: www.toy.com</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/toys.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Toy Land</h5>
-                        <h6>Phone: 123 566</h6>
-                        <h6>Web: www.toy.com</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/toys.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Toy Land</h5>
-                        <h6>Phone: 123 566</h6>
-                        <h6>Web: www.toy.com</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="pagination-one">
-                  <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                      <li class="page-item"><a class="page-link
-        active" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
-            </div>
-            <div class="swipe-tab-content">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/cars.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: cars</h5>
-                        <h6>Phone: 123 566</h6>
-                        <h6>Web: www.toy.com</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/toys.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Toy Land</h5>
-                        <h6>Phone: 123 566</h6>
-                        <h6>Web: www.toy.com</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/toys.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Toy Land</h5>
-                        <h6>Phone: 123 566</h6>
-                        <h6>Web: www.toy.com</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/toys.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Toy Land</h5>
-                        <h6>Phone: 123 566</h6>
-                        <h6>Web: www.toy.com</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/toys.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Toy Land</h5>
-                        <h6>Phone: 123 566</h6>
-                        <h6>Web: www.toy.com</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="pagination-one">
-                  <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                      <li class="page-item"><a class="page-link
-                        active" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
-            </div>
-            <div class="swipe-tab-content">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/bikes.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Toy Land</h5>
-                        <h6>Phone: 123 566</h6>
-                        <h6>Web: www.toy.com</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/toys.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Toy Land</h5>
-                        <h6>Phone: 123 566</h6>
-                        <h6>Web: www.toy.com</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/toys.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Toy Land</h5>
-                        <h6>Phone: 123 566</h6>
-                        <h6>Web: www.toy.com</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/toys.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Toy Land</h5>
-                        <h6>Phone: 123 566</h6>
-                        <h6>Web: www.toy.com</h6>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-4 col-lg-3 col-6 full-width">
-                    <div class="table-shows">
-                      <div class="fetrur-new"><img src="images/toys.jpg"></div>
-                      <div class="fetaure-detail">
-                        <h5>Company: Toy Land</h5>
-                        <h6>Phone: 123 566</h6>
-                        <h6>Web: www.toy.com</h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="pagination-one">
-                  <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                      <li class="page-item"><a class="page-link
-        active" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
+             <!-- <div class="pagination-one">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link
+      active" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                  </ul>
+                </nav>
+              </div>-->
             </div>
           </div>
+        
+          
+          
+          
+          
         </div>
       </div>
     </div>
   </div>
- 
-  @endsection
+</div>
+<div class="bottom-banner"> <img src="{{ URL::asset('trade/images/sell.jpg')}}"> </div>
+@endsection
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script type="text/javascript">
+
+$(document).ready(function() {
+  
+
+
+    $('.category').on('click', function() {
+
+
+      var cat_id=$(this).closest("li").find('.cat_id').val();
+     
+      //alert(cat_id);
+     $.ajax({
+                url: '/get_suppliers/'+cat_id,
+                type: "get",
+                cache:false,
+                
+                success:function(data) {
+                  var data=JSON.parse(data);
+                  
+                   $('#suppliers').empty();
+                  $.each( data, function( key, value ) {
+                  console.log(value.name);
+                  $('#suppliers').append('<div class="col-sm-4 col-lg-3 col-6 full-width"><div class="table-shows"><div class="fetrur-new"><img src="http://localhost:8000/trade/images/favorite-modal.PNG"></div><div class="fetaure-detail"><h5>Company:'+value.name+'</h5><h5>Phone: '+value.phone+'</h5></div></div></div>');
+                  });
+                    
+                }
+                });
+    });
+});
+</script>

@@ -10,6 +10,7 @@ use App\td_classified_posts_media;
 use App\td_classified_post_attributes;
 use App\td_classified_category_attributes;
 use App\td_members;
+use App\td_users;
 use App\td_geo_states;
 use App\td_post_member_wishlist;
 
@@ -22,25 +23,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $category=td_classified_category::where('parent','0')->get();
         $post=td_classified_posts::where('featured','1')->get();
+        //$user=td_users::where('id',$request->session()->get('user_id'))->first();
         return view('pages.home',['category'=>$category,'post'=>$post]);
     }
 
-    public function addWholesalers()
-    {
-        return view('pages.wholesalers');
-    }
-    public function addPosts()
-    {
-        $category_temp  = td_classified_category::where('deleted', 0)->get();
-        $category = TradeHelp::post_category_tree($category_temp);
-        return view('pages.posts',['category'=>$category]);
-        
-    }
-
+   
+    
     public function getProductDetails($id1)
     {
         $str=$id1;
@@ -50,7 +42,7 @@ class HomeController extends Controller
         $category=td_classified_category::where('id', $post->post_category)->first();
         $seller=td_members::where('id', $post->post_listedby)->get();
         $parent=$category->parent;
-        $featured=td_classified_posts::where([['featured', '=', '1'],['post_category', '=', $post->post_category],['id', '!=', $id]])->get();
+        $featured=td_classified_posts::where([['post_category', '=', $post->post_category],['id', '!=', $id]])->orderBy('featured', 'DESC') ->get();
         $attribute =DB::table('td_classified_category_attributes')
             ->join('td_classified_post_attributes','td_classified_category_attributes.id', '=', 'td_classified_post_attributes.category_attribute_id')
             ->where([['category_id', '=', $post->post_category],['td_classified_category_attributes.deleted', '=', '0'],['status', '=', '1']])

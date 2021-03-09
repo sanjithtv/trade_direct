@@ -85,7 +85,7 @@ class ChatController extends Controller
     }
     public function chatInbox($id)
     {
-      //echo $id;
+      //$id;
       $msg=td_classified_post_chats::where([['initiated_by','=',$id],['deleted','=', '0']])
       ->orderBy('created_at', 'DESC')
       ->get();
